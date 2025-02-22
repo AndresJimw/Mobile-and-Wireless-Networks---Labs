@@ -9,6 +9,7 @@ t = 0:0.001:0.25; % Time vector from 0 to 0.25 seconds with 1 ms steps
 x = sin(2 * pi * 50 * t) + sin(2 * pi * 120 * t); % Sum of sine waves
 
 % Plot Time Domain Signal
+figure; % Create a new figure
 plot(x(1:50));
 title('Time domain signal');
 xlabel('Time (s)');
@@ -25,11 +26,13 @@ Pyy = Y .* conj(Y) / 251; % Compute power spectral density
 f = 1000 / 251 * (0:127); % Frequency axis for the first 128 points
 
 % Plot Power Spectral Density
+figure; % Create a new figure
 plot(f, Pyy(1:128));
 title('Power spectral density');
 xlabel('Frequency (Hz)');
 ylabel('Power/Frequency');
 grid;
+
 
 % Notes:
 % - Fourier series represents a function as a sum of sinusoidal functions.
@@ -40,6 +43,7 @@ t = 0:0.1e-3/100:3*0.1e-3; % 100 samples per cycle with 3 cycles
 
 % Generate Fourier Series Terms
 y1 = (20/pi) * sin(2 * pi * 1e4 * t);
+figure; % Create a new figure
 subplot(3, 1, 1);
 plot(t, y1);
 title('One Term of Fourier Series');
