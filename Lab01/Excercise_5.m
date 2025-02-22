@@ -8,6 +8,7 @@ x = linspace(-5, 5); % Generate linearly spaced vector from -5 to 5
 y = sinc(x);
 
 % Plot Sinc Function
+figure;
 plot(x, y);
 grid;
 title('Sinc Function');
@@ -33,6 +34,7 @@ t = 0:ts:tpuls; % Time vector from 0 to tpuls
 y = chirp(t, f1, t(end), f2);
 
 % Plot Chirp Signal
+figure;
 plot(t, y, 'b*-'); % Add blue stars and lines
 grid on;
 title('Chirp Signal'); 
