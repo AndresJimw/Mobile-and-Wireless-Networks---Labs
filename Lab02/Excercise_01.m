@@ -64,15 +64,22 @@ is_omnidirectional = all(abs(pattern_data - mean(pattern_data)) < 0.1 * mean(pat
 fprintf('Is the 2.6 MHz dipole omnidirectional? %s\n', string(is_omnidirectional));
 
 % Design of 10 half-wave dipoles
+% Design of 10 dipoles with specific L/λ ratios
 
 % Parameter definition
+frequency_2_6MHz = 2.6e6; % Frequency of operation
 wavelength = 3e8 / frequency_2_6MHz; % Wavelength
-num_dipoles = 10; % Number of dipoles to design
 
-% Design of 10 half-wave dipoles and plot their field patterns
+% Define the desired L/λ ratios
+dipole_length_ratios = [0.1, 0.25, 0.5, 0.75, 1.00, 1.25, 1.50, 2.00, 5.00, 8.00];
+num_dipoles = length(dipole_length_ratios); % Number of dipoles to design
+
+% Design of dipoles and plot their field patterns
 for i = 1:num_dipoles
-    % Calculate the L/λ ratio for each dipole
-    dipole_length_ratio = 0.5 + (i-1) * 0.1; % L/λ ratio from 0.5 to 1.4
+    % Get the L/λ ratio for the current dipole
+    dipole_length_ratio = dipole_length_ratios(i);
+    
+    % Calculate the dipole length
     dipole_length = dipole_length_ratio * wavelength; % Dipole length
     
     % Calculate the width dynamically as a percentage of the length
@@ -84,6 +91,6 @@ for i = 1:num_dipoles
     % Create a new figure for each dipole
     figure;
     pattern(multi_dipole, frequency_2_6MHz); % Plot the radiation pattern
-    title(sprintf('Radiation pattern for L/λ = %.1f', dipole_length_ratio));
-    saveas(gcf, sprintf('fig_e01_multi_dipole_pattern_L_lambda_%.1f.png', dipole_length_ratio));
+    title(sprintf('Radiation pattern for L/λ = %.2f', dipole_length_ratio));
+    saveas(gcf, sprintf('fig_e01_multi_dipole_pattern_L_lambda_%.2f.png', dipole_length_ratio));
 end
