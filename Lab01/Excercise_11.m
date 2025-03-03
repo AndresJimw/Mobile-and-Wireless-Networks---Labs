@@ -1,6 +1,5 @@
 % Notes:
 % - Digital signal processing (DSP) is widely used in speech processing for tasks such as compression, transmission, recognition, and speaker identification.
-% - This exercise demonstrates the fundamental steps of reading and manipulating a speech signal in MATLAB.
 
 % Step 1: Use the audioread command to load speech.au into MATLAB
 file_path = 'D:\Archivos de Usuario\Documents\MATLAB\Mobile and Wireless Networks\Lab01\speech\speech.au';
